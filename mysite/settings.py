@@ -52,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -85,6 +86,8 @@ import dj_database_url
 DATABASES = {
     'default': dj_database_url.parse('postgres://abhinavnepalapp_user:AEWFa5MUMjFeKBnGjDE6VqQqCwL8MFXz@dpg-cgp56sgrddl9mmtpp2l0-a.ohio-postgres.render.com/abhinavnepalapp')
 }
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 AUTH_PASSWORD_VALIDATORS = [
