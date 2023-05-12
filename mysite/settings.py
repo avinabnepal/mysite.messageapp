@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-didl1=#td89gxevgi0ti7p3%gs%bh!=8j=_xl@wag&o%u6-*^i"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'registration',
     'crispy_forms',
     'crispy_bootstrap5',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [

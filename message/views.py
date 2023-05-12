@@ -6,6 +6,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from .models import Message
 from django.forms import *
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .serializers import MessageSerializer
 
 
 class Index(TemplateView):
@@ -31,3 +34,10 @@ class MessageCreate(LoginRequiredMixin, CreateView):
         form.fields['title'].widget = TextInput(attrs={'class': 'form-control'})
         form.fields['text'].widget = Textarea(attrs={'class': 'form-control'})
         return form
+
+
+class ListAPI(APIView):
+    def get(self, request, format=None):
+        messages = Message.objects.all()
+        serializer = MessageSerializer(messages, many=True)
+        return Response(serializer.data)
